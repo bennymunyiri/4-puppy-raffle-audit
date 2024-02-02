@@ -12,11 +12,8 @@ contract DeployPuppyRaffle is Script {
     function run() public {
         feeAddress = msg.sender;
 
-        vm.broadcast();
-        PuppyRaffle puppyRaffle = new PuppyRaffle(
-            1e18,
-            feeAddress,
-            duration
-        );
+        vm.startBroadcast();
+        PuppyRaffle puppyRaffle = new PuppyRaffle(1e18, feeAddress, duration);
+        vm.stopBroadcast();
     }
 }
